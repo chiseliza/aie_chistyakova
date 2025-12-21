@@ -64,3 +64,12 @@ uv run eda-cli report data/example.csv --out-dir reports
 ```bash
 uv run pytest -q
 ```
+
+
+## Эндпоинт POST /quality-flags-from-csv
+
+- принимает CSV-файл;
+- использует EDA-ядро (summarize_dataset, missing_table, compute_quality_flags);
+- возвращает набор флагов качества;
+- корректно обрабатывает ошибки чтения и пустой CSV (код 400).
+
