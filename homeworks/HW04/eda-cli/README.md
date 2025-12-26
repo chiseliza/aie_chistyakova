@@ -65,6 +65,14 @@ uv run eda-cli report data/example.csv --out-dir reports
 uv run pytest -q
 ```
 
+## HTTP-сервис
+### Запуск 
+```bash
+uv run uvicorn eda_cli.api:app --reload --port 8000
+```
+Параметры: 
+- --reload - перезапуск сервера при обновлении кола
+- --port - порт сервиса
 
 ## Эндпоинт POST /quality-flags-from-csv
 
