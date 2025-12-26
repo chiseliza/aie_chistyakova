@@ -65,14 +65,30 @@ uv run eda-cli report data/example.csv --out-dir reports
 uv run pytest -q
 ```
 
-## HTTP-сервис
-### Запуск 
+
+## Запуск HTTP-сервиса
+
+HTTP-сервис реализован в модуле `eda_cli.api` на FastAPI.
+
+### Запуск Uvicorn
+
 ```bash
 uv run uvicorn eda_cli.api:app --reload --port 8000
 ```
-Параметры: 
-- --reload - перезапуск сервера при обновлении кола
-- --port - порт сервиса
+
+Пояснения:
+
+- `eda_cli.api:app` - путь до объекта FastAPI `app` в модуле `eda_cli.api`;
+- `--reload` - автоматический перезапуск сервера при изменении кода (удобно для разработки);
+- `--port 8000` - порт сервиса (можно поменять при необходимости).
+
+После запуска сервис будет доступен по адресу:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
 
 ## Эндпоинт POST /quality-flags-from-csv
 
