@@ -57,7 +57,16 @@ uv run eda-cli report data/example.csv --out-dir reports
 
 --top-k-categories - сколько top-значений показывать для категорий
 
+### Вывод 5 первых строк
 
+```bash
+uv run eda-cli head data/example.csv
+```
+
+Параметры:
+
+- `--sep` – разделитель (по умолчанию `,`);
+- `--encoding` – кодировка (по умолчанию `utf-8`).
 
 ## Тесты
 
