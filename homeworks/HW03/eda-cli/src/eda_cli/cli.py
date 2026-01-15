@@ -69,6 +69,7 @@ def report(
     max_hist_columns: int = typer.Option(6, help="Максимум числовых колонок для гистограмм."),
     top_k_categories: int = typer.Option(5, help="сколько топ-значений выводить для категориальных признаков."),
     title: str = typer.Option("eda_отчёт", help="заголовок отчёта"),
+    min_missing_share: int = typer.Option(0.3, help="порог доли пропусков"),
 ) -> None:
     """
     Сгенерировать полный EDA-отчёт:
@@ -118,6 +119,9 @@ def report(
         f.write(f"- Слишком много пропусков: **{quality_flags['too_many_missing']}**\n\n")
         f.write(f"- Есть колонки, где все значения одинаковые: **{quality_flags['has_constant_columns']}**\n")
         f.write(f"- Есть дубликаты по ID: **{quality_flags['has_suspicious_id_duplicates']}**\n")
+        f.write(f"- Есть категориальные колонки с большим количеством уникальных значений: **{quality_flags['has_high_cardinality_categoricals']}**\n")
+        f.write(f"- Есть числовые колонки с большим количеством нулевых значений: **{quality_flags['has_many_zero_values']}**\n")
+
 
         f.write("## Колонки\n\n")
         f.write("См. файл `summary.csv`.\n\n")
@@ -153,6 +157,23 @@ def report(
     typer.echo("- Табличные файлы: summary.csv, missing.csv, correlation.csv, top_categories/*.csv")
     typer.echo("- Графики: hist_*.png, missing_matrix.png, correlation_heatmap.png")
 
+
+
+@app.command()
+def head(
+    path: str = typer.Argument(..., help="Путь к CSV-файлу."),
+    sep: str = typer.Option(",", help="Разделитель в CSV."),
+    encoding: str = typer.Option("utf-8", help="Кодировка файла."),
+) -> None:
+    """
+    Напечатать первые n строк датасета
+
+    """
+    df = _load_csv(Path(path), sep=sep, encoding=encoding)
+    head = df.head()
+    
+    typer.echo(head)
+    
 
 if __name__ == "__main__":
     app()

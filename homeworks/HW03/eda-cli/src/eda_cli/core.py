@@ -177,6 +177,8 @@ def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> 
     - подозрительно мало строк;
     - есть колнки с одинаковыми значениями
     - повторяющиеся id
+    - для категориальный признаков количество уникальных значений больше или равно 10
+    - для числовых признаков доля пропущенных значений больше 0.3
     и т.п.
     """
     flags: Dict[str, Any] = {}
@@ -187,13 +189,16 @@ def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> 
     flags["max_missing_share"] = max_missing_share
     flags["too_many_missing"] = max_missing_share > 0.5
 
-
-    flags["has_suspicious_id_duplicates"] = any([summary.n_rows > col.unique for col in summary.columns if 'id' in col.name.lower()])
-
-
     constant_columns = [col.name for col in summary.columns if col.unique == 1]
     flags["has_constant_columns"] = len(constant_columns) > 0
 
+    categorical_columns = [col.name for col in summary.columns if col.dtype == "str" and col.unique >= 10]
+    flags["has_high_cardinality_categoricals"] = len(categorical_columns) > 0
+
+    flags["has_suspicious_id_duplicates"] = any([summary.n_rows > col.unique for col in summary.columns if 'id' in col.name.lower()])
+
+    zero_columns = [col.name for col in summary.columns if col.non_null < 0.7]
+    flags["has_many_zero_values"] = len(zero_columns) > 0
 
     # Простейший «скор» качества
     score = 1.0
@@ -206,8 +211,14 @@ def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> 
     if flags["has_suspicious_id_duplicates"]:
         score -= 0.01
 
+    if flags["has_high_cardinality_categoricals"]:
+        score -= 0.05
+
     if flags["has_constant_columns"]:
         score -= 0.1
+
+    if flags["has_many_zero_values"]:
+        score-=0.1
 
 
     score = max(0.0, min(1.0, score))
