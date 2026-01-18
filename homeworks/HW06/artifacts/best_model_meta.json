@@ -1,0 +1,9 @@
+{
+  "best_model": "AdaBoost",
+  "test_acc": 0.8838888888888888,
+  "test_f1": 0.7390761548064919,
+  "test_roc_auc": 0.923690949491326,
+  "best_param": {
+    "n_estimators": 50
+  }
+}

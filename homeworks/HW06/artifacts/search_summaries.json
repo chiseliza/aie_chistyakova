@@ -1,0 +1,27 @@
+{
+  "logistic_regression": {
+    "best_params": {
+      "logreg__C": 100.0
+    },
+    "best_cv_score": 0.8041495300132466
+  },
+  "decision_tree": {
+    "best_params": {
+      "max_depth": 10,
+      "min_samples_leaf": 10
+    },
+    "best_cv_score": 0.8289624724042927
+  },
+  "random_forest": {
+    "best_params": {
+      "max_depth": 10
+    },
+    "best_cv_score": 0.9174130495451474
+  },
+  "ada_boost": {
+    "best_params": {
+      "n_estimators": 50
+    },
+    "best_cv_score": 0.9214384331005732
+  }
+}
