@@ -1,0 +1,13 @@
+﻿query,expected_source,retrieved_sources,hit_at_k
+Что такое Metasploit Framework и для чего он используется?,msf_001,"msf_001, msf_015, msf_002",1
+Как запустить Metasploit в Kali Linux и обновить его?,msf_002,"msf_001, msf_002, msf_015",1
+Какая команда в msfconsole показывает список доступных опций модуля?,msf_003,"msf_004, msf_016, msf_002",0
+Какие типы модулей есть в Metasploit и чем они отличаются?,msf_004,"msf_015, msf_001, msf_004",1
+В чём разница между reverse TCP и bind TCP payload? Когда какой использовать?,msf_005,msf_005,1
+Как просканировать порты на целевой машине с помощью auxiliary-модулей?,msf_006,"msf_005, msf_006, msf_002",1
+Как проэксплуатировать уязвимость vsftpd 2.3.4 на Metasploitable 2?,msf_007,"msf_007, msf_015, msf_001",1
+Как управлять активными сессиями и что такое Meterpreter?,msf_008,"msf_008, msf_003",1
+Какие способы обхода антивирусов поддерживаются в Metasploit?,msf_009,"msf_015, msf_001, msf_017",0
+Как сгенерировать reverse shell для Linux через msfvenom?,msf_010,"msf_010, msf_002, msf_011",1
+Как инициализировать базу данных в Metasploit и сохранить результаты сканирования?,msf_011,"msf_015, msf_001, msf_002",0
+Какие модули post-exploitation использовать для сбора данных после взлома?,msf_012,"msf_006, msf_004, msf_012",1

@@ -1,0 +1,6 @@
+﻿question,answer,retrieved_sources
+Что такое Metasploit Framework и для чего он используется?,"Metasploit Framework (MSF) — это открытая платформа для разработки, тестирования и выполнения эксплойтов. Обновление: msfupdate (или apt update && apt install metasploit-framework).","msf_001, msf_015, msf_002"
+Как запустить Metasploit в Kali Linux и обновить его?,"В Kali Linux Metasploit предустановлен. только в изолированных лабораторных средах (например, Kali Linux + Metasploitable 2) и при наличии письменного разрешения владельца системы.","msf_001, msf_002, msf_015"
+Какая команда в msfconsole показывает список доступных опций модуля?,Запуск: msfconsole — интерактивная консоль.,"msf_004, msf_016, msf_002"
+Какие типы модулей есть в Metasploit и чем они отличаются?,"Metasploit эффективно работает в связке: 1. Metasploit Framework (MSF) — это открытая платформа для разработки, тестирования и выполнения эксплойтов.","msf_015, msf_001, msf_004"
+В чём разница между reverse TCP и bind TCP payload? Когда какой использовать?,"Bind TCP — атакующий подключается к открытому порту на цели (RHOST, RPORT). Два основных типа: Reverse TCP — целевая машина подключается к атакующему (LHOST, LPORT).","msf_005, msf_005, msf_005"
