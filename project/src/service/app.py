@@ -101,7 +101,7 @@ def health():
     response_model=PredictionResponse,
     summary="Предсказание цены авиабилета",
 )
-def predict_risk(applicant: FlightFeatures):
+def predict_price(applicant: FlightFeatures):
 
     try:
         result = predict(applicant.model_dump(by_alias=True))
