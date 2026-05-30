@@ -63,7 +63,6 @@ def train_model(data_path: Path) -> None:
     xgb_reg_pred = xgb_reg.predict(X_test)
     xgb_reg_metrics = score(y_test, xgb_reg_pred)
 
-    logger.info(f"metrics: {xgb_reg_metrics}")
     model_path = Path(config["artifacts"]["models"]["best_model"])
     model_path.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(xgb_reg, config["artifacts"]["models"]["best_model"])
