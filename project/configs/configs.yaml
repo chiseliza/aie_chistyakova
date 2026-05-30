@@ -1,0 +1,85 @@
+data:
+  url: "https://raw.githubusercontent.com/BelideSaiTeja/Flight-Price-Prediction/main/Flight%20Price%20Prediction%20dataset.csv"
+  raw_path: 'data/raw/data.csv'
+  processed_path: 'data/processed/dataset.csv'
+  test_size: 0.15
+  val_size: 0.1
+  random_state: 42
+  target_column: 'price'
+
+features:
+  - stops
+  - class 
+  - duration 
+  - days_left
+  - airline_Air_India
+  - airline_GO_FIRST
+  - airline_Indigo
+  - airline_SpiceJet
+  - airline_Vistara
+  - airline_AirAsia
+  - source_city_Chennai
+  - source_city_Delhi
+  - source_city_Hyderabad
+  - source_city_Kolkata
+  - source_city_Mumbai
+  - source_city_Bangalore
+  - destination_city_Chennai 
+  - destination_city_Delhi
+  - destination_city_Hyderabad
+  - destination_city_Kolkata
+  - destination_city_Mumbai
+  - destination_city_Bangalore
+  - departure_time_Early_Morning
+  - departure_time_Evening
+  - departure_time_Late_Night
+  - departure_time_Morning
+  - departure_time_Night
+  - departure_time_Afternoon
+  - arrival_time_Early_Morning
+  - arrival_time_Evening
+  - arrival_time_Late_Night
+  - arrival_time_Morning
+  - arrival_time_Night
+  - arrival_time_Afternoon
+
+training:
+  random_state: 42
+  cv_folds: 5
+
+models:
+  linear_regression:
+
+
+  catboost:
+    iterations: 100
+    depth: 6
+    learning_rate: 0.1
+    random_seed: 42
+    verbose: False
+
+  xgboost:
+    n_estimators: 200
+    max_depth: 9
+    learning_rate: 0.05
+    random_state: 42
+
+artifacts:
+  logs: artifacts/logs/logs.log'
+
+  metrics:
+    metrics_compare: 'artifacts/metrics/metrics_compare.csv'
+    best_model_metrics: 'artifacts/metrics/metrics.json'
+  
+  models:
+    best_model: 'artifacts/models/best_model.pkl'
+
+  plots:
+    target_analise: 'artifacts/plots/target.png'
+    correlation_matrix: 'artifacts/plots/correlation.png'
+
+
+service:
+  host: "0.0.0.0"
+  port: 8000
+  log_level: "info"

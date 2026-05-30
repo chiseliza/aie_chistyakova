@@ -1,0 +1,12 @@
+{
+    "airline": "IndiGo",
+    "flight": "6E-123",
+    "source_city": "Delhi",
+    "departure_time": "Morning",
+    "stops": "zero",
+    "arrival_time": "Evening",
+    "destination_city": "Mumbai",
+    "class": "Business",
+    "duration": 10,
+    "days_left": 30
+}
